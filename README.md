@@ -1,16 +1,25 @@
 Taro 多端开发实现原理与项目实战 - cnode框架搭建
 
 1.安装
+
 npm install
 
 2.运行
+
 npm run dev:weapp       // 微信小程序
+
 npm run dev:swan        // 百度小程序
+
 npm run dev:alipay      // 支付宝小程序
+
 npm run dev:tt          // 头条小程序
+
 npm run dev:h5          // 网页
+
 npm run dev:rn          // react-native APP
+
 npm run dev:qq          // QQ小程序
+
 npm run dev:quickapp    // 快应用
 
 3.编译
@@ -39,7 +48,6 @@ npm run build:quickapp    // 快应用
 |   |   |   ├── banner     页面 index 私有组件
 |   |   |   ├── index.js   index 页面逻辑
 |   |   |   └── index.css  index 页面样式
-
 |   ├── reducers           页面执行动作管理目录
 |   ├── store              页面状态管理目录
 |   ├── utils              公共方法库
