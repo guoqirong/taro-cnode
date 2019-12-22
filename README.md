@@ -40,14 +40,19 @@ npm run build:quickapp    // 快应用
 |   |   |   ├── index.js   index 页面逻辑
 |   |   |   └── index.css  index 页面样式
 |   ├── reducers           页面执行动作管理目录
+
 |   ├── store              页面状态管理目录
+
 |   ├── utils              公共方法库
+
 |   ├── app.scss           项目总通用样式
+
 |   ├── app.jsx            项目入口文件
 
 |   └── index.html         项目h5入口文件
 
 ├── package.json           资源包配置文件
+
 └── README.md              项目说明
 
 
