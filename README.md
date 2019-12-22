@@ -1,8 +1,12 @@
 Taro 多端开发实现原理与项目实战 - cnode框架搭建
 
+
+
 1.安装
 
 npm install
+
+
 
 2.运行
 
@@ -22,6 +26,9 @@ npm run dev:qq          // QQ小程序
 
 npm run dev:quickapp    // 快应用
 
+
+
+
 3.编译
 
 npm run build:weapp       // 微信小程序
@@ -40,7 +47,10 @@ npm run build:qq          // QQ小程序
 
 npm run build:quickapp    // 快应用
 
+
+
 4.目录结构
+
 |
 
 ├── config                 配置目录
