@@ -46,4 +46,8 @@ npm run build:quickapp    // 快应用
 |   ├── app.jsx            项目入口文件
 |   └── index.html         项目h5入口文件
 ├── package.json           资源包配置文件
+
+
 └── README.md              项目说明
+
+
