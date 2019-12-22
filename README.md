@@ -44,10 +44,10 @@ npm run build:quickapp    // 快应用
 |   ├── utils              公共方法库
 |   ├── app.scss           项目总通用样式
 |   ├── app.jsx            项目入口文件
+
 |   └── index.html         项目h5入口文件
+
 ├── package.json           资源包配置文件
-
-
 └── README.md              项目说明
 
 
