@@ -1,4 +1,60 @@
 .index {
   flex-direction: column;
   width: 100%;
+  .list-box {
+    margin-top: 38px;
+  }
+  .dragUpdataPage{height: 100vh;position: relative;overflow: hidden;
+    .downDragBox{
+      width: 100%;
+      top: 0px;
+      display: flex;
+      overflow: hidden;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      position: absolute;
+    }
+    .upDragBox{
+      bottom: 0px;
+      width: 100%;
+      display: flex;
+      overflow: hidden;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      position: absolute;
+    }
+    .dragUpdata{height: 100%;width: 100%;position: absolute;}
+    .downText{margin-left: 20px;}
+  }
+  .at-list {
+    margin: 10px 0;
+    border-bottom: 1px solid #999;
+  }
+  .at-list::after{
+    border: none;
+  }
+  .at-list__item {
+    padding: 20px 40px;
+    font-size: 32px;
+    border: none;
+  }
+  .at-list__item .item-extra__icon-arrow{
+    font-size: 48px;
+  }
+  .at-list__item .item-content__info-title {
+    font-size: 32px;
+  }
+  .at-list__item .item-content__info-note {
+    font-size: 28px;
+  }
+  .at-list__item .item-extra__info {
+    font-size: 32px;
+    line-height: 48px;
+    padding-right: 0px;
+  }
+  .at-drawer__content {
+    width: 80vw;
+  }
 }

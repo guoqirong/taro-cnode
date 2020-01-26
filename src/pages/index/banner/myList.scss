@@ -1,0 +1,39 @@
+@import '~taro-ui/dist/style/index.scss';
+.my-list {
+  margin-top: 60px;
+  .at-list__item-thumb,.at-list__item-content,.at-list__item-extra {
+    display: inline-block;
+  }
+  .at-list__item-thumb {
+    width: 96px;
+    margin-right: 12px;
+  }
+  .my-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  .my-tab {
+    font-size: 26px;
+    border-radius: 6px;
+    text-align: center;
+    color: white;
+    background-color: lightblue;
+  }
+  .at-list__item-content {
+    width: calc(100% - 96px - 128px);
+    margin-right: 12px;
+  }
+  .item-content__info-title {
+    height: 84px;
+    font-size: 36px!important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 2.5;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+  .at-list__item-extra {
+    width: 100px;
+  }
+}
