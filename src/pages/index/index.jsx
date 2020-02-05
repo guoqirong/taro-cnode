@@ -1,17 +1,19 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, ScrollView } from '@tarojs/components'
-import { AtNavBar, AtDrawer, AtList, AtListItem, AtActivityIndicator  } from 'taro-ui'
+import { AtNavBar, AtDrawer, AtList, AtIcon, AtListItem, AtActivityIndicator } from 'taro-ui'
 import { connect } from '@tarojs/redux'
 
+import { setLocalStorage, getLocalStorage } from '../../utils/index'
 import { openmydrawer, closemydrawer, changetabitem, downloaddata, pullloaddata } from '../../actions/index/index'
+import { settoken, accesstoken, clearsuserinfo, getmessagecount } from '../../actions/user/index'
 
+import IconSvg from '../../components/image/index'
 import MyList from './banner/mylist'
 
 import './index.scss'
 
-
-@connect(({ counter, index }) => ({
-  counter, index
+@connect(({ index, user }) => ({
+  index, user
 }), (dispatch) => ({
   openmydrawer () {
     dispatch(openmydrawer())
@@ -27,28 +29,40 @@ import './index.scss'
   },
   pullloaddata (data) {
     dispatch(pullloaddata(data))
+  },
+  settoken (data) {
+    dispatch(settoken(data))
+  },
+  accesstoken (data) {
+    dispatch(accesstoken(data))
+  },
+  clearsuserinfo () {
+    dispatch(clearsuserinfo())
+  },
+  getmessagecount (data) {
+    dispatch(getmessagecount(data))
   }
 }))
 
 class Index extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      dargStyle: {       // 下拉框的样式
-        top: 0 + 'px'
-      },
-      downDragStyle: {   // 下拉图标的样式
-        height: 0 + 'px'
-      },
-      downText: '下拉刷新',
-      upDragStyle: {     // 上拉图标样式
-        height: 0 + 'px'
-      },
-      pullText: '上拉加载更多',
-      start_p: {},
-      scrollY:true,
-      dargState: 0      // 刷新状态 0不做操作 1刷新 -1加载更多
-    }
+  }
+  state = {
+    dargStyle: {       // 下拉框的样式
+      top: 0 + 'px'
+    },
+    downDragStyle: {   // 下拉图标的样式
+      height: 0 + 'px'
+    },
+    downText: '下拉刷新',
+    upDragStyle: {     // 上拉图标样式
+      height: 0 + 'px'
+    },
+    pullText: '上拉加载更多',
+    start_p: {},
+    scrollY:true,
+    dargState: 0      // 刷新状态 0不做操作 1刷新 -1加载更多
   }
 
   config = {
@@ -60,8 +74,59 @@ class Index extends Component {
     this.props.changetabitem(changetab)
   }
 
+  componentDidShow () {
+    if (getLocalStorage('token')) {
+      this.props.accesstoken({token: getLocalStorage('token')})
+      this.props.getmessagecount({token: getLocalStorage('token')})
+    }
+  }
+
   handleClick () {
     console.log(111)
+  }
+
+  handleGotoLogin () {
+    // console.log(getLocalStorage('token'), this.props.user.token)
+    if (getLocalStorage('token') || this.props.user.token) {
+      Taro.navigateTo({
+        url: '/pages/user/index'
+      })
+    } else {
+      Taro.navigateTo({
+        url: '/pages/login/index'
+      })
+    }
+  }
+
+  scanCode (e) {
+    let that = this
+    Taro.scanCode().then((data) => {
+      setLocalStorage('token', data.result)
+      that.props.settoken({token: data.result})
+      if (that.props.user.token) {
+        that.props.accesstoken({token: data.result})
+      }
+    })
+    e.stopPropagation()
+  }
+
+  goOut (e) {
+    Taro.removeStorageSync('token')
+    this.props.clearsuserinfo()
+    this.props.settoken({token: ''})
+    e.stopPropagation()
+  }
+
+  myMessage () {
+    if (getLocalStorage('token') || this.props.user.token) {
+      Taro.navigateTo({
+        url: '/pages/message/index'
+      })
+    } else {
+      Taro.navigateTo({
+        url: '/pages/login/index'
+      })
+    }
   }
 
   reduction() {                   // 还原初始设置
@@ -151,7 +216,8 @@ class Index extends Component {
             top: -pY + 'px',
           },
           upDragStyle: {
-            height: pY + 'px'
+            height: pY + 'px',
+            backgroundColor: '#FFF'
           },
           scrollY: false            // 拖动的时候禁用
         })
@@ -202,7 +268,26 @@ class Index extends Component {
           onClose={this.props.index.drawerShow ? this.props.closemydrawer : function(){}}
         >
           <AtList>
-            <AtListItem title='登录' arrow='right' iconInfo={{ size: 16, color: '#78A4FA', value: 'user', }} />
+            <View onClick={this.handleGotoLogin.bind(this)}>
+              <View className='at-list__item-thumb item-thumb my-item-thumb'>
+                <IconSvg width='40px' height='40px' borderRadius='20px' src={this.props.user.simpleUserInfo.avatar_url || require('../../assets/icons/svg/icon-user.svg')}></IconSvg>
+              </View>
+              <View className='at-list__item-content item-content my-item-content'>
+                <View className='item-content__info-title'>{this.props.user.simpleUserInfo.loginname || '登录'}</View>
+              </View>
+              {
+                process.env.TARO_ENV == 'weapp' && !getLocalStorage('token') ? 
+                <View className='at-list__item-extra item-extra my-item-extra' onClick={this.scanCode.bind(this)}>
+                  <IconSvg width='30px' height='30px' borderRadius='15px' src={require('../../assets/icons/svg/icon-scan.svg')}></IconSvg>
+                </View> : ''
+              }
+              {
+                getLocalStorage('token') ? 
+                <View className='at-list__item-extra item-extra my-item-extra' onClick={this.goOut.bind(this)}>
+                  <AtIcon value='external-link' size='30' color='#999'></AtIcon>
+                </View> : ''
+              }
+            </View>
           </AtList>
           <AtList>
             {
@@ -213,20 +298,20 @@ class Index extends Component {
               })
             }
           </AtList>
-          <AtList>
-            <AtListItem title='我的消息' arrow='right' iconInfo={{ size: 16, color: '#78A4FA', value: 'bell', }} />
+          <AtList className='my-message'>
+            <AtListItem title='我的消息' arrow='right' onClick={this.myMessage.bind(this)} iconInfo={{ size: 16, color: '#78A4FA', value: 'bell', }} extraText={this.props.user.messageCount ? String(this.props.user.messageCount) : ''} />
           </AtList>
         </AtDrawer>
-        <View className='list-box dragUpdataPage'>
+        <View className='list-box dragUpdataPage' style={process.env.TARO_ENV != 'weapp' ? 'margin-top: 38px;calc(100vh - 38px)' : ''}>
           <View className='downDragBox' style={downDragStyle}>
             <AtActivityIndicator></AtActivityIndicator>
             <Text className='downText'>{this.state.downText}</Text>
           </View>
           <ScrollView
             style={dargStyle}
-            onTouchMove={this.touchmove}
-            onTouchEnd={this.touchEnd}
-            onTouchStart={this.touchStart}
+            onTouchMove={this.touchmove.bind(this)}
+            onTouchEnd={this.touchEnd.bind(this)}
+            onTouchStart={this.touchStart.bind(this)}
             className='dragUpdata'
             scrollY={this.state.scrollY}
             scrollWithAnimation>

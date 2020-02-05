@@ -22,7 +22,10 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/index/index'
+      'pages/index/index',
+      'pages/login/index',
+      'pages/user/index',
+      'pages/message/index'
     ],
     window: {
       backgroundTextStyle: 'light',

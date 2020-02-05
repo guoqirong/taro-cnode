@@ -1,0 +1,26 @@
+@import '~taro-ui/dist/style/index.scss';
+.user {
+  flex-direction: column;
+  width: 100%;
+  .at-nav-bar__title {
+    font-size: 32px;
+  }
+  .user-box {
+    width: 100vw;
+    margin-top: 90px;
+    height: 300px;
+    padding: 100px auto;
+    background-color: lightblue;
+  }
+  .user-logo {
+    padding-top: 60px;
+    padding-left: calc(50vw - 60px);
+  }
+  .user-name {
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    padding-top: 20px;
+    text-align: center;
+  }
+}

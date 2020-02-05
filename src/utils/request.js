@@ -1,17 +1,7 @@
 import Taro from '@tarojs/taro'
 
 // const CODE_SUCCESS = '200'
-const CODE_AUTH_EXPIRED = '600'
-
-// function getStorage(key) {
-//   return Taro.getStorage({ key }).then(res => res.data).catch(() => '')
-// }
-
-// function updateStorage(data = {}) {
-//   return Promise.all([
-//     Taro.setStorage({ key: 'token', data: data['3rdSession'] || '' }),
-//   ])
-// }
+const CODE_AUTH_EXPIRED = '403'
 
 /**
  * 简易封装网络请求
@@ -40,7 +30,7 @@ export async function request(options) {
       return Promise.reject(res.data)
     }
     
-    return data
+    return data || res.data
   }).catch((err) => {
     const defaultMsg = err.code === CODE_AUTH_EXPIRED ? '登录失效' : '请求异常'
     if (showToast) {
