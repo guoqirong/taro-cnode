@@ -1,3 +1,4 @@
+import Taro from '@tarojs/taro'
 /**
  * 日期格式化 gqr
  * @param {*} dateStr
@@ -36,4 +37,48 @@ export function getUUID () {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
     return (c === 'x' ? (Math.random() * 16 | 0) : ('r&0x3' | '0x8')).toString(16)
   })
+}
+
+/**
+ * 本地保存数据
+ * @param {*} key 
+ * @param {*} val 
+ */
+export function setLocalStorage (key, val) {
+  Taro.setStorageSync(key, val)
+  // // weapp
+  // if(process.env.TARO_ENV == 'weapp') {
+  //   wx.setStorage({
+  //     key: key,
+  //     data: val,
+  //     success: (res) => {
+  //       console.log("保存成功")
+  //     }
+  //   })
+  // } else {
+  //   // h5 和 alipay
+  //   localStorage.setItem(key, val)
+  // }
+}
+
+/**
+ * 获取本地保存数据
+ * @param {*} key 
+ */
+export function getLocalStorage (key) {
+  return Taro.getStorageSync(key)
+  // // weapp
+  // if(process.env.TARO_ENV == 'weapp') {
+  //   let val = ''
+  //   wx.getStorage({
+  //     key: key,
+  //     success: (res) => {
+  //       val = res.data
+  //     }
+  //   })
+  //   return val
+  // } else {
+  //   // h5 和 alipay
+  //   return localStorage.getItem(key)
+  // }
 }

@@ -1,0 +1,16 @@
+.login {
+  flex-direction: column;
+  width: 100%;
+  .at-nav-bar__title {
+    font-size: 32px;
+  }
+  .login-box{
+    margin: 30px;
+    margin-top: 90px;
+    width: 93%;
+  }
+  .login-input {
+    margin-left: 0px;
+    margin-bottom: 20px;
+  }
+}

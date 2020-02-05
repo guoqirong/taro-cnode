@@ -1,0 +1,81 @@
+@import '~taro-ui/dist/style/index.scss';
+.message {
+  flex-direction: column;
+  width: 100%;
+  .at-nav-bar__title {
+    font-size: 32px;
+  }
+  .message-box{
+    // margin: 30px;
+    margin-top: 90px;
+    width: 100%;
+    position: relative;
+    .at-list__item-thumb,.at-list__item-content,.at-list__item-extra,.toplic-list-name,.toplic-list-val {
+      display: inline-block;
+    }
+    .at-list__item-thumb {
+      width: 96px;
+      height: 96px;
+      margin-right: 12px;
+      position: absolute;
+      top: 40px;
+      left: 20px;
+    }
+    .my-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+    .at-list__item-content {
+      padding-left: 96px;
+      width: calc(100% - 96px - 128px);
+      margin-right: 12px;
+    }
+    .item-content__info-title {
+      height: 64px;
+      font-size: 36px!important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.2;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    .at-list__item-extra {
+      width: 100px;
+      height: 96px;
+      .at-button {
+        padding: 16px;
+        line-height: 60px;
+      }
+      .at-button__wxbutton {
+        position: relative;
+      }
+    }
+    .topic-list {
+      background-color: #cccccc;
+      margin-top: 10px;
+      padding: 10px;
+      position: relative;
+      .toplic-list-name {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-weight: bold;
+      }
+      .toplic-list-val {
+        padding-top: 10px;
+        margin-left: 110px;
+        width: calc(100vw - 180px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
+  .fab-botton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+}
