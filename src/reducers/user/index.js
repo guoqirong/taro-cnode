@@ -23,7 +23,8 @@ export default function index (state = USER_STATE, action) {
     case CLEARSUSERINFO:
       return {
         ...state,
-        simpleUserInfo: {}
+        simpleUserInfo: {},
+        messageCount: 0
       }
     case GETUSERINFO:
       return {

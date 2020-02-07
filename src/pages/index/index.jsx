@@ -82,7 +82,15 @@ class Index extends Component {
   }
 
   handleClick () {
-    console.log(111)
+    if (getLocalStorage('token') || this.props.user.token) {
+      Taro.navigateTo({
+        url: '/pages/collectList/index'
+      })
+    } else {
+      Taro.navigateTo({
+        url: '/pages/login/index'
+      })
+    }
   }
 
   handleGotoLogin () {
@@ -105,6 +113,7 @@ class Index extends Component {
       that.props.settoken({token: data.result})
       if (that.props.user.token) {
         that.props.accesstoken({token: data.result})
+        that.props.getmessagecount({token: data.result})
       }
     })
     e.stopPropagation()
@@ -255,7 +264,7 @@ class Index extends Component {
       <View className='index'>
         <AtNavBar
           onClickLeftIcon={this.props.openmydrawer}
-          onClickRgIconSt={this.handleClick}
+          onClickRgIconSt={this.handleClick.bind(this)}
           fixed
           color='#000'
           title={this.props.index.changetab.name}

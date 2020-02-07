@@ -1,4 +1,4 @@
-import { OPENMYDRAWER, CLOSEMYDRAWER, CHANGETABITEM, DOWNLOADDATA, PULLLOADDATA } from '../../constants/index/index'
+import { OPENMYDRAWER, CLOSEMYDRAWER, CHANGETABITEM, DOWNLOADDATA, PULLLOADDATA, GETTOPICDETAIL, COLLECTTOPIC, DECOLLECTTOPIC, GETCOLLECTLIST } from '../../constants/index/index'
 
 const INDEX_STATE = {
   drawerShow: false,
@@ -17,7 +17,9 @@ const INDEX_STATE = {
     limit: 20,
     mdrender: true
   },
-  dataList: []
+  dataList: [],
+  dataDetail: {},
+  collectList: []
 }
 
 export default function index (state = INDEX_STATE, action) {
@@ -57,6 +59,30 @@ export default function index (state = INDEX_STATE, action) {
         drawerShow: false,
         searchData: action.searchData,
         dataList: dataList
+      }
+    case GETTOPICDETAIL:
+      return {
+        ...state,
+        dataDetail: action.dataDetail
+      }
+    case COLLECTTOPIC:
+      let dataDetail = state.dataDetail
+      dataDetail.is_collect = action.is_collect
+      return {
+        ...state,
+        dataDetail: dataDetail
+      }
+    case DECOLLECTTOPIC:
+      let dedataDetail = state.dataDetail
+      dedataDetail.is_collect = action.is_collect
+      return {
+        ...state,
+        dataDetail: dedataDetail
+      }
+    case GETCOLLECTLIST:
+      return {
+        ...state,
+        collectList: action.collectList
       }
     default:
       return state
