@@ -1,3 +1,4 @@
+@import '~taro-ui/dist/style/index.scss';
 .detail {
   flex-direction: column;
   width: 100%;
@@ -8,6 +9,10 @@
     width: calc(100% - 40px);
     padding: 20px;
     margin-top: 90px;
+    .at-list__item {
+      position: relative;
+      top: 0px;
+    }
     .at-list__item-content,.at-list__item-extra {
       display: inline-block;
     }
@@ -23,6 +28,7 @@
     .at-list__item-extra {
       width: 60px;
       height: 96px;
+      position: absolute;
     }
     .replies-list {
       width: 100%;
