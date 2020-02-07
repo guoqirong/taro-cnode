@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View } from '@tarojs/components';
+import { View, Image } from '@tarojs/components';
 import { AtNavBar, AtIcon, AtList, AtListItem } from 'taro-ui'
 import { connect } from '@tarojs/redux'
 
