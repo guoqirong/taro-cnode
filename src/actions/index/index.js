@@ -3,10 +3,14 @@ import {
   CLOSEMYDRAWER,
   CHANGETABITEM,
   DOWNLOADDATA,
-  PULLLOADDATA
+  PULLLOADDATA,
+  GETTOPICDETAIL,
+  COLLECTTOPIC,
+  DECOLLECTTOPIC,
+  GETCOLLECTLIST
 } from '../../constants/index/index'
 import { request } from '../../utils/request'
-import { API_TOPICS } from '../../constants/api'
+import { API_TOPICS, API_TOPIC, API_TOPIC_COLLECT, API_TOPIC_DECOLLECT, API_TOPIC_COLLECTLIST } from '../../constants/api'
 
 export const openmydrawer = () => {
   return {
@@ -102,6 +106,81 @@ export const pullloaddata = (data) => {
           mdrender: true
         },
         dataList: res
+      }
+      dispatch(savedatachange(resData))
+    }).catch((e) => {
+      console.log(e)
+    })
+  }
+}
+export const gettopicdetail = (data) => {
+  return dispatch => {
+    request({
+      url: API_TOPIC + data.id,
+      method: 'GET',
+      data: {
+        accesstoken: data.token
+      }
+    }).then((res) => {
+      let resData = {
+        type: GETTOPICDETAIL,
+        dataDetail: res
+      }
+      dispatch(savedatachange(resData))
+    }).catch((e) => {
+      console.log(e)
+    })
+  }
+}
+export const collecttopic = (data) => {
+  return dispatch => {
+    request({
+      url: API_TOPIC_COLLECT,
+      method: 'POST',
+      data: {
+        accesstoken: data.token,
+        topic_id: data.id
+      }
+    }).then((res) => {
+      let resData = {
+        type: COLLECTTOPIC,
+        is_collect: true
+      }
+      dispatch(savedatachange(resData))
+    }).catch((e) => {
+      console.log(e)
+    })
+  }
+}
+export const decollecttopic = (data) => {
+  return dispatch => {
+    request({
+      url: API_TOPIC_DECOLLECT,
+      method: 'POST',
+      data: {
+        accesstoken: data.token,
+        topic_id: data.id
+      }
+    }).then((res) => {
+      let resData = {
+        type: DECOLLECTTOPIC,
+        is_collect: false
+      }
+      dispatch(savedatachange(resData))
+    }).catch((e) => {
+      console.log(e)
+    })
+  }
+}
+export const getcollectlist = (data) => {
+  return dispatch => {
+    request({
+      url: API_TOPIC_COLLECTLIST + data.userName,
+      method: 'GET'
+    }).then((res) => {
+      let resData = {
+        type: GETCOLLECTLIST,
+        collectList: res
       }
       dispatch(savedatachange(resData))
     }).catch((e) => {
