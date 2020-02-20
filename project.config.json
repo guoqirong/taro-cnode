@@ -2,7 +2,7 @@
   "miniprogramRoot": "./dist",
   "projectname": "taro-cnode",
   "description": "cnode框架搭建",
-  "appid": "touristappid",
+  "appid": "wx3be4031197defec2",
   "setting": {
     "urlCheck": true,
     "es6": false,
