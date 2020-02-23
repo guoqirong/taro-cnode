@@ -1,4 +1,5 @@
 import { SETTOKEN, ACCESSTOKEN, CLEARSUSERINFO, GETUSERINFO, GETMESSAGECOUNT, GETMESSAGELIST } from '../../constants/user/index'
+import Taro from '@tarojs/taro'
 
 const USER_STATE = {
   token: '',
@@ -9,6 +10,7 @@ const USER_STATE = {
 }
 
 export default function index (state = USER_STATE, action) {
+  Taro.hideLoading()
   switch (action.type) {
     case SETTOKEN:
       return {
