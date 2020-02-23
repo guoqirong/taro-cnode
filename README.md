@@ -46,7 +46,7 @@ npm run build:quickapp    // 快应用
 
 
 ## 4.目录结构
-
+```
 |
 ├── config                 配置目录
 |   ├── dev.js             开发时配置
@@ -70,5 +70,19 @@ npm run build:quickapp    // 快应用
 |   └── index.html         项目h5入口文件
 ├── package.json           资源包配置文件
 └── README.md              项目说明
+```
+
+## 5.效果图
 
 
+![首页](https://github.com/guoqirong/taro-cnode/blob/master/demo-screenshot/index.jpg)
+
+![菜单1](https://github.com/guoqirong/taro-cnode/blob/master/demo-screenshot/menu1.jpg)
+
+![菜单2](https://github.com/guoqirong/taro-cnode/blob/master/demo-screenshot/menu2.jpg)
+
+![详情](https://github.com/guoqirong/taro-cnode/blob/master/demo-screenshot/detail.jpg)
+
+![消息](https://github.com/guoqirong/taro-cnode/blob/master/demo-screenshot/message.jpg)
+
+![收藏](https://github.com/guoqirong/taro-cnode/blob/master/demo-screenshot/collect.jpg)

@@ -7,6 +7,7 @@ import {
   GETMESSAGELIST
 } from '../../constants/user/index'
 import { request } from '../../utils/request'
+import Taro from '@tarojs/taro'
 import { setLocalStorage } from '../../utils/index'
 import { API_ACCESSTOKEN, API_USER, API_MESSAGE_COUNT, API_MESSAGE, API_MESSAGE_MARKONE, API_MESSAGE_MARKALL } from '../../constants/api'
 
@@ -20,6 +21,9 @@ export const setUserData = (data) => {
   return data
 }
 export const accesstoken = (data) => {
+  Taro.showLoading({
+    title: '加载中...'
+  })
   return dispatch => {
     request({
       url: API_ACCESSTOKEN,
@@ -45,6 +49,9 @@ export const clearsuserinfo = () => {
   }
 }
 export const getuserinfo = (data) => {
+  Taro.showLoading({
+    title: '加载中...'
+  })
   return dispatch => {
     request({
       url: API_USER + data.userName,
@@ -61,6 +68,9 @@ export const getuserinfo = (data) => {
   }
 }
 export const getmessagecount = (data) => {
+  Taro.showLoading({
+    title: '加载中...'
+  })
   return dispatch => {
     request({
       url: API_MESSAGE_COUNT,
@@ -81,6 +91,9 @@ export const getmessagecount = (data) => {
   }
 }
 export const getmessagelist = (data) => {
+  Taro.showLoading({
+    title: '加载中...'
+  })
   return dispatch => {
     request({
       url: API_MESSAGE,
@@ -101,6 +114,9 @@ export const getmessagelist = (data) => {
   }
 }
 export const readonemessage = (data) => {
+  Taro.showLoading({
+    title: '加载中...'
+  })
   return dispatch => {
     request({
       url: API_MESSAGE_MARKONE + data.id,
@@ -116,6 +132,9 @@ export const readonemessage = (data) => {
   }
 }
 export const readallmessage = (data) => {
+  Taro.showLoading({
+    title: '加载中...'
+  })
   return dispatch => {
     request({
       url: API_MESSAGE_MARKALL,

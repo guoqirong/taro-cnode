@@ -10,6 +10,7 @@ import {
   GETCOLLECTLIST
 } from '../../constants/index/index'
 import { request } from '../../utils/request'
+import Taro from '@tarojs/taro'
 import { API_TOPICS, API_TOPIC, API_TOPIC_COLLECT, API_TOPIC_DECOLLECT, API_TOPIC_COLLECTLIST } from '../../constants/api'
 
 export const openmydrawer = () => {
@@ -26,6 +27,9 @@ export const savedatachange = (resData) => {
   return resData
 }
 export const changetabitem = (data) => {
+  Taro.showLoading({
+    title: '加载中...'
+  })
   return dispatch => {
     request({
       url: API_TOPICS,
@@ -56,6 +60,9 @@ export const changetabitem = (data) => {
   }
 }
 export const downloaddata = (data) => {
+  Taro.showLoading({
+    title: '加载中...'
+  })
   return dispatch => {
     request({
       url: API_TOPICS,
@@ -85,6 +92,9 @@ export const downloaddata = (data) => {
   }
 }
 export const pullloaddata = (data) => {
+  Taro.showLoading({
+    title: '加载中...'
+  })
   return dispatch => {
     request({
       url: API_TOPICS,
@@ -114,6 +124,9 @@ export const pullloaddata = (data) => {
   }
 }
 export const gettopicdetail = (data) => {
+  Taro.showLoading({
+    title: '加载中...'
+  })
   return dispatch => {
     request({
       url: API_TOPIC + data.id,
@@ -133,6 +146,9 @@ export const gettopicdetail = (data) => {
   }
 }
 export const collecttopic = (data) => {
+  Taro.showLoading({
+    title: '加载中...'
+  })
   return dispatch => {
     request({
       url: API_TOPIC_COLLECT,
@@ -153,6 +169,9 @@ export const collecttopic = (data) => {
   }
 }
 export const decollecttopic = (data) => {
+  Taro.showLoading({
+    title: '加载中...'
+  })
   return dispatch => {
     request({
       url: API_TOPIC_DECOLLECT,
@@ -173,6 +192,9 @@ export const decollecttopic = (data) => {
   }
 }
 export const getcollectlist = (data) => {
+  Taro.showLoading({
+    title: '加载中...'
+  })
   return dispatch => {
     request({
       url: API_TOPIC_COLLECTLIST + data.userName,

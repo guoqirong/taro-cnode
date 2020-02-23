@@ -1,4 +1,5 @@
 import { OPENMYDRAWER, CLOSEMYDRAWER, CHANGETABITEM, DOWNLOADDATA, PULLLOADDATA, GETTOPICDETAIL, COLLECTTOPIC, DECOLLECTTOPIC, GETCOLLECTLIST } from '../../constants/index/index'
+import Taro from '@tarojs/taro'
 
 const INDEX_STATE = {
   drawerShow: false,
@@ -23,6 +24,7 @@ const INDEX_STATE = {
 }
 
 export default function index (state = INDEX_STATE, action) {
+  Taro.hideLoading()
   switch (action.type) {
     case OPENMYDRAWER:
       return {
