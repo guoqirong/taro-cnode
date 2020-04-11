@@ -3,7 +3,7 @@
   width: 100%;
   .list-box {
     margin-top: 30px;
-    height: calc(100vh - 90px)
+    height: calc(100vh - 30px)!important;
   }
   .dragUpdataPage{
     height: 100vh;
@@ -11,7 +11,7 @@
     overflow: hidden;
     .downDragBox{
       width: 100%;
-      top: 0px;
+      top: 50px;
       display: flex;
       overflow: hidden;
       justify-content: center;

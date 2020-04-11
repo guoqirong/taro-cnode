@@ -178,8 +178,8 @@ class Index extends Component {
     let that = this
     let move_p = e.touches[0],   // 移动时的位置
       deviationX = 0.30,         // 左右偏移量(超过这个偏移量不执行下拉操作)
-      deviationY = 70,           // 拉动长度（低于这个值的时候不执行）
-      maxY = 100;                // 拉动的最大高度
+      deviationY = 30,           // 拉动长度（低于这个值的时候不执行）
+      maxY = 60;                // 拉动的最大高度
 
     let start_x = this.state.start_p.clientX,
       start_y = this.state.start_p.clientY,
@@ -311,7 +311,7 @@ class Index extends Component {
             <AtListItem title='我的消息' arrow='right' onClick={this.myMessage.bind(this)} iconInfo={{ size: 16, color: '#78A4FA', value: 'bell', }} extraText={this.props.user.messageCount ? String(this.props.user.messageCount) : ''} />
           </AtList>
         </AtDrawer>
-        <View className='list-box dragUpdataPage' style={process.env.TARO_ENV != 'weapp' ? 'margin-top: 38px;calc(100vh - 38px)' : ''}>
+        <View className='list-box dragUpdataPage' style={process.env.TARO_ENV != 'weapp' ? 'margin-top: 38px;height:calc(100vh - 38px)!important' : ''}>
           <View className='downDragBox' style={downDragStyle}>
             <AtActivityIndicator></AtActivityIndicator>
             <Text className='downText'>{this.state.downText}</Text>
