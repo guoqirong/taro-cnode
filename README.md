@@ -81,7 +81,7 @@ npm run build:quickapp    // 快应用
 
 ![菜单2](https://github.com/guoqirong/taro-cnode/blob/master/demo-screenshot/menu2.jpg)
 
-![详情](https://github.com/guoqirong/taro-cnode/blob/master/demo-screenshot/detail.jpg)
+![详情](https://github.com/guoqirong/taro-cnode/blob/master/demo-screenshot/detail.png)
 
 ![消息](https://github.com/guoqirong/taro-cnode/blob/master/demo-screenshot/message.jpg)
 
